@@ -7,3 +7,5 @@ junk/
 media/
 *.log
 .jobs
+build/
+cache/

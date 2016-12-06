@@ -1,29 +1,28 @@
 {
-  "name": "audiogram",
-  "version": "0.9.5",
-  "description": "Turn audio into a shareable video.",
-  "main": "index.js",
+  "name": "audiogram_nwjs",
+  "version": "1.0.1",
+  "node-main": "",
+  "main": "index.html",
+  "window": {
+     "show": false,
+    "toolbar": true,
+    "width": 800,
+    "height": 600
+  },
+   "chromium-args": "--mixed-context",
   "scripts": {
-    "start": "npm run postinstall && bin/server",
+    "start": "nw --enable-node-worker",
     "worker": "bin/worker",
     "postinstall": "mkdir -p editor/js && browserify client/index.js > editor/js/bundle.js",
     "rebuild": "npm run postinstall",
     "watch": "mkdir -p editor/js && watchify client/index.js -o editor/js/bundle.js",
     "debug": "npm run postinstall && DEBUG=1 bin/server",
-    "test": "rm -rf test/tmp && tape 'test/**/*-test.js'"
+    "test": "rm -rf test/tmp && tape 'test/**/*-test.js'",
+    "make_nw": "node build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nypublicradio/audiogram.git"
-  },
-  "keywords": [],
-  "author": {
-    "name": "Noah Veltman",
-    "url": "https://twitter.com/veltman"
-  },
-  "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.2.39",
+    "nw": "^0.12.3",
     "browserify": "^13.0.0",
     "canvas": "git+https://github.com/chearon/node-canvas.git#12971f64a66b",
     "compression": "^1.6.1",
@@ -44,6 +43,7 @@
     "winston": "^2.2.0"
   },
   "devDependencies": {
+    "nw-builder": "^3.1.2",
     "supertest": "^1.2.0",
     "tape": "^4.6.0",
     "watchify": "^3.7.0"

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+
+</head>
+<body>
+  <script type="text/javascript">
+
+
+const spawn = require('child_process').spawn;
+const ls = spawn('/usr/local/bin/node', ['./bin/server']);
+
+ls.stdout.on('data', function(data) {
+  console.log("stdout: "+data);
+});
+
+ls.stderr.on('data', function(data) {
+  console.log("stderr:"+ $data);
+});
+
+ls.on('close', function(code) {
+  console.log("child process exited with code "+code);
+});
+
+
+  // document.addEventListener("DOMContentLoaded", function(){
+
+  //   location.href="http://localhost:8888";
+  // });
+
+	//link to open localhost  
+	var gui = require('nw.gui');
+	// Open URL with default browser.
+	gui.Shell.openExternal('http://localhost:8888');
+  </script>
+
+
+
+</body>
+</html>
